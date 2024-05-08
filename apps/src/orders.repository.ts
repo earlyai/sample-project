@@ -8,7 +8,7 @@ import { CreateOrderRequestClass } from './dto/create-order-request';
  * Order Schema
  */
 @MongooseSchema()
-export class Order {
+export class OrderClass {
   @Prop({ type: Schema.Types.ObjectId, default: new Types.ObjectId() })
   _id: Types.ObjectId;
 
@@ -33,9 +33,10 @@ export const OrderSchema = new Schema({
  * Orders Repository
  */
 @Injectable()
-export class OrdersRepository {
+export class OrdersRepositoryClass {
   constructor(
-    @InjectModel(Order.name) private readonly orderModel: Model<Order>,
+    @InjectModel(OrderClass.name)
+    private readonly orderModel: Model<OrderClass>,
     @InjectConnection() private readonly connection: Connection,
   ) {}
 
@@ -44,7 +45,7 @@ export class OrdersRepository {
    * @param request - The CreateOrderRequest data to be created.
    * @returns A promise that resolves to the created order.
    */
-  async create(request: CreateOrderRequestClass): Promise<Order> {
+  async create(request: CreateOrderRequestClass): Promise<OrderClass> {
     const { name, price, phoneNumber } = request;
 
     // Construct a new order object
@@ -62,7 +63,7 @@ export class OrdersRepository {
     const savedOrder = await createdOrder.save();
 
     // Convert the saved order to the Order type
-    const order = savedOrder as unknown as Order;
+    const order = savedOrder as unknown as OrderClass;
 
     return order;
   }
@@ -72,7 +73,7 @@ export class OrdersRepository {
    * @param filterQuery - The filter query to match against.
    * @returns A promise that resolves to an array of matching orders.
    */
-  async find(filterQuery: FilterQuery<Order> = {}): Promise<Order[]> {
+  async find(filterQuery: FilterQuery<OrderClass> = {}): Promise<OrderClass[]> {
     return this.orderModel.find(filterQuery, {}, { lean: true });
   }
 }

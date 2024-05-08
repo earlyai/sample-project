@@ -1,7 +1,6 @@
 import { Controller, Get } from '@nestjs/common';
 import { Injectable } from '@nestjs/common';
 
-
 @Injectable()
 export class BillingServiceClass {
   publicGetHello(): string {
@@ -10,7 +9,6 @@ export class BillingServiceClass {
   private privateGetHello(): string {
     return 'Hello World!';
   }
-
 }
 
 @Controller()

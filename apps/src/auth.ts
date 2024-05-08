@@ -1,7 +1,6 @@
 import { Controller, Get } from '@nestjs/common';
 import { Injectable } from '@nestjs/common';
 
-
 @Injectable()
 export class AuthServiceClass {
   publicGetHello(): string {
@@ -12,7 +11,6 @@ export class AuthServiceClass {
     return this.privateGetHello();
   }
 }
-
 
 @Controller()
 export class AuthControllerClass {
