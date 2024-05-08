@@ -1,9 +1,9 @@
 import { NestFactory } from '@nestjs/core';
-import { RmqServiceClass } from '@app/common';
-import { BillingModuleClass } from 'apps/src/billing.module';
+import { BillingModule } from './billing.module';
+import { RmqServiceClass } from 'src/common';
 
 async function bootstrap() {
-  const app = await NestFactory.create(BillingModuleClass);
+  const app = await NestFactory.create(BillingModule);
   const rmqService = app.get<RmqServiceClass>(RmqServiceClass);
   app.connectMicroservice(rmqService.getOptions('billing'));
   await app.startAllMicroservices();

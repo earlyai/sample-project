@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
-import { BillingControllerClass, BillingServiceClass } from './billing';
-import { RmqModule } from '@app/common';
+import { BillingControllerClass } from './billing.controller';
+import { BillingServiceClass } from './billing.service';
+import { RmqModule } from 'src/common';
 import { ConfigModule } from '@nestjs/config';
 import * as Joi from 'joi';
 
@@ -18,4 +19,4 @@ import * as Joi from 'joi';
   controllers: [BillingControllerClass],
   providers: [BillingServiceClass],
 })
-export class BillingModuleClass {}
+export class BillingModule {}

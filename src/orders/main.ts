@@ -1,5 +1,5 @@
 import { NestFactory } from '@nestjs/core';
-import { OrdersModule } from '../../src/orders.module';
+import { OrdersModule } from './orders.module';
 import { ValidationPipe } from '@nestjs/common/pipes';
 import { ConfigService } from '@nestjs/config';
 

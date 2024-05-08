@@ -2,13 +2,13 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel, InjectConnection } from '@nestjs/mongoose';
 import { Connection, Model, Schema, Types, FilterQuery } from 'mongoose';
 import { Prop, Schema as MongooseSchema } from '@nestjs/mongoose';
-import { CreateOrderRequestClass } from './dto/create-order-request';
+import { CreateOrderRequest } from './dto/create-order-request';
 
 /**
  * Order Schema
  */
 @MongooseSchema()
-export class OrderClass {
+export class Order {
   @Prop({ type: Schema.Types.ObjectId, default: new Types.ObjectId() })
   _id: Types.ObjectId;
 
@@ -35,8 +35,7 @@ export const OrderSchema = new Schema({
 @Injectable()
 export class OrdersRepositoryClass {
   constructor(
-    @InjectModel(OrderClass.name)
-    private readonly orderModel: Model<OrderClass>,
+    @InjectModel(Order.name) private readonly orderModel: Model<Order>,
     @InjectConnection() private readonly connection: Connection,
   ) {}
 
@@ -45,7 +44,7 @@ export class OrdersRepositoryClass {
    * @param request - The CreateOrderRequest data to be created.
    * @returns A promise that resolves to the created order.
    */
-  async create(request: CreateOrderRequestClass): Promise<OrderClass> {
+  async create(request: CreateOrderRequest): Promise<Order> {
     const { name, price, phoneNumber } = request;
 
     // Construct a new order object
@@ -63,7 +62,7 @@ export class OrdersRepositoryClass {
     const savedOrder = await createdOrder.save();
 
     // Convert the saved order to the Order type
-    const order = savedOrder as unknown as OrderClass;
+    const order = savedOrder as unknown as Order;
 
     return order;
   }
@@ -73,7 +72,7 @@ export class OrdersRepositoryClass {
    * @param filterQuery - The filter query to match against.
    * @returns A promise that resolves to an array of matching orders.
    */
-  async find(filterQuery: FilterQuery<OrderClass> = {}): Promise<OrderClass[]> {
+  async find(filterQuery: FilterQuery<Order> = {}): Promise<Order[]> {
     return this.orderModel.find(filterQuery, {}, { lean: true });
   }
 }

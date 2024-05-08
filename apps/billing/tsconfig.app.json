@@ -4,6 +4,6 @@
     "declaration": false,
     "outDir": "../../dist/apps/billing"
   },
-  "include": ["src/**/*"],
+  "include": ["../../src/billing/**/*"],
   "exclude": ["node_modules", "dist", "test", "**/*spec.ts"]
 }

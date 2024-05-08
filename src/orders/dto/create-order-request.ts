@@ -5,7 +5,7 @@ import {
   IsString,
 } from 'class-validator';
 
-export class CreateOrderRequestClass {
+export class CreateOrderRequest {
   @IsNotEmpty()
   @IsString()
   name: string;

@@ -4,8 +4,9 @@ const config: Config.InitialOptions = {
   testEnvironment: "node",
   rootDir: ".",
   roots: [
+    "<rootDir>/src/", 
     "<rootDir>/apps/",
-    "<rootDir>/libs/"
+    "<rootDir>/libs/",
   ],
   // Module Resolution
   moduleFileExtensions: ["js", "json", "ts"],
@@ -19,6 +20,7 @@ const config: Config.InitialOptions = {
   testRegex: ".*\\.(test)\\.ts$",
   collectCoverage: true,
   collectCoverageFrom: [
+    "src/**/*.(t|j)s",
     "apps/**/*.(t|j)s",
     "libs/**/*.(t|j)s",
     "!**/*/*.e2e-spec.ts",
