@@ -1,6 +1,7 @@
 import type { Config } from '@jest/types';
 
 const config: Config.InitialOptions = {
+  preset: 'ts-jest',
   testEnvironment: "node",
   rootDir: ".",
   roots: [
@@ -18,22 +19,12 @@ const config: Config.InitialOptions = {
   },
   // Testing Patterns and Coverage
   testRegex: ".*\\.(test)\\.ts$",
-  collectCoverage: true,
   collectCoverageFrom: [
-    "src/**/*.(t|j)s",
-    "apps/**/*.(t|j)s",
-    "libs/**/*.(t|j)s",
-    "!**/*/*.e2e-spec.ts",
     "!**/*/main.ts",
     "!**/*/index.ts",
-    "!**/*/*.module.ts"
-
-  ],
-  coverageDirectory: "<rootDir>/coverage",
-  watchPathIgnorePatterns: [
-    "<rootDir>/coverage/",
-    "<rootDir>/\\.early.coverage/"
+    "!**/*/*module.ts"
   ]
 };
 
 export default config;
+

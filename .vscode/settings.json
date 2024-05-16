@@ -1,3 +1,0 @@
-{
-    "early.coverageCommand": "npm test --silent -- --coverage --coverageDirectory=./.early.coverage --silent --passWithNoTests"
-}
