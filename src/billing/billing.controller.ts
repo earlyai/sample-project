@@ -7,6 +7,6 @@ export class BillingControllerClass {
 
   @Get()
   getHello(): string {
-    return this.billingService.getHello();
+    return this.billingService.publicGetHello();
   }
 }
