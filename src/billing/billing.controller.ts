@@ -6,7 +6,7 @@ export class BillingControllerClass {
   constructor(private readonly billingService: BillingServiceClass) {}
 
   @Get()
-  getHello(): string {
+  publicGetHello(): string {
     return this.billingService.publicGetHello();
   }
 }
